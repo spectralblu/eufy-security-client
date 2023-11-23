@@ -1571,8 +1571,8 @@ export class Station extends TypedEmitter<StationEvents> {
             }, {
                 property: propertyData
             });
-        } else if (device.isStarlight4GLTE()) {
-            this.p2pSession.sendCommandWithStringPayload({
+        } else if (device.isStarlight4GLTE() || device.isOutdoorPanAndTiltCamera()) {
+            await this.p2pSession.sendCommandWithStringPayload({
                 commandType: CommandType.CMD_DOORBELL_SET_PAYLOAD,
                 value: JSON.stringify({
                     "commandType": CommandType.CMD_SET_FLOODLIGHT_MANUAL_SWITCH,
